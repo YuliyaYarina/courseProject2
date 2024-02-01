@@ -12,60 +12,58 @@ import static org.springframework.http.RequestEntity.put;
 @Service
 public class JavaQuestionService implements QuestionService {
 
-   private final Set<String> questions = new HashSet<>();
+   private final Set<Question> questions = new HashSet<>();
 
-    @PostConstruct
-    public void question(){
-        put("Дайте определение переменной.", "Petin");
-        put("Перечислите типы переменных. ", "Petin");
-        put("Какие методы называются геттерами?", "Petin");
-        put("Что геттеры делают?", "Petin");
-        put("Какие условные операторы вы знаете?", "Petin");
-        put("Что такое массив?", "Petin");
-        put("Дайте определение сеттерам.", "Petin");
-        put("Какие циклы вы знаете?", "Petin");
-        put("Что такое массив?", "Petin");
-        put("Что такое конструкторы?", "Petin");
-        put("Где String создается?", "Petin");
-        put("В чем разница между == и equals()?", "Petin");
-        put("Какая функция у оператора return?", "Petin");
-        put("Когда применяется цикл while?", "Petin");
-        put("Для чего применяется метод toString?", "Petin");
-        put("Что такое область видимости?", "Petin");
-    };
+   private final Random random = new Random();
+
+   @PostConstruct
+   public void init() {
+      add("Дайте определение переменной.", "Petin");
+      add("Перечислите типы переменных. ", "Petin");
+      add("Какие методы называются геттерами?", "Petin");
+      add("Что геттеры делают?", "Petin");
+      add("Какие условные операторы вы знаете?", "Petin");
+      add("Что такое массив?", "Petin");
+      add("Дайте определение сеттерам.", "Petin");
+      add("Какие циклы вы знаете?", "Petin");
+      add("Что такое массив?", "Petin");
+      add("Что такое конструкторы?", "Petin");
+      add("Где String создается?", "Petin");
+      add("В чем разница между == и equals()?", "Petin");
+      add("Какая функция у оператора return?", "Petin");
+      add("Когда применяется цикл while?", "Petin");
+
+   }
+
 @Override
     public Question add(String question, String answer){
-
-
-       return null;
+    Question newQuestion = new Question(question, answer);
+    questions.add(newQuestion);
+    return newQuestion;
     }
 
 @Override
     public Question add(Question question){
-
-
-       return null;
+    questions.add(question);
+       return question;
     }
 
     @Override
     public Question remove(Question question){
-
-
-       return null;
+    questions.remove(question);
+       return question;
     }
 
     @Override
     public Collection<Question> getAll(){
-
-
-       return null;
+        return questions;
     }
 
     @Override
     public Question getRandomQuestion(){
-
-
-       return null;
+    Random random = new Random();
+    int index = random.nextInt(questions.size());
+           return new ArrayList<>(questions).get(index);
     }
 
 
