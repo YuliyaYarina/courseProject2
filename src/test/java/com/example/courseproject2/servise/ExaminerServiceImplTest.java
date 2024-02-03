@@ -1,7 +1,7 @@
 package com.example.courseproject2.servise;
 
 import com.example.courseproject2.domain.Question;
-import com.example.courseproject2.exc.BAD_REQUEST;
+import com.example.courseproject2.exc.ExceptionLotQuestionsHaveRequested;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,7 +13,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -34,7 +33,7 @@ class ExaminerServiceImplTest {
 
         // then
         Assertions.assertThrows(
-                BAD_REQUEST.class,
+                ExceptionLotQuestionsHaveRequested.class,
                 () -> examinerService.getQuestions(amount)
         );
     }
