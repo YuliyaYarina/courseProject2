@@ -2,6 +2,8 @@ package com.example.courseproject2.controller;
 
 import com.example.courseproject2.domain.Question;
 import com.example.courseproject2.servise.impl.ExaminerService;
+import com.example.courseproject2.servise.impl.QuestionService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +18,12 @@ import java.util.Set;
 public class ExaminerController {
 
     ExaminerService examinerService;
-@GetMapping("/get/{amount}")
-    public Collection<Question> getQuestions(@PathVariable int amount) {
+//    @Qualifier
+//    private QuestionService questionService;
 
-    return examinerService.getQuestions(amount);
-}
+//@GetMapping("/get/{amount}")
+//    public Collection<Question> getQuestions(@PathVariable int amount) {
+//
+//    return examinerService.getQuestions(amount);
+//}
 }
