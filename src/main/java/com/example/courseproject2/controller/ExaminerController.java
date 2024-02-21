@@ -15,8 +15,13 @@ import java.util.Set;
 @RequestMapping("/exam")
 public class ExaminerController {
 
-    ExaminerService examinerService;
-@GetMapping("/get/{amount}")
+    private final ExaminerService examinerService;
+
+    public ExaminerController(ExaminerService examinerService) {
+        this.examinerService = examinerService;
+    }
+
+    @GetMapping("/get/{amount}")
     public Collection<Question> getQuestions(@PathVariable int amount) {
 
     return examinerService.getQuestions(amount);

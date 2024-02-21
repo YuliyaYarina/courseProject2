@@ -14,7 +14,6 @@ import java.util.Set;
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
 
-    private final Random random = new Random();
     QuestionService questionService;
 
     public ExaminerServiceImpl(QuestionService questionService) {

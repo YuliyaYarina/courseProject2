@@ -13,7 +13,6 @@ import java.util.Collection;
 @RequestMapping("/exam/java")
 public class JavaQuestionControlle {
    private final QuestionService questionService;
-   private Question question;
 
 //    Добавить: “/exam/java/add?question=QuestionText&answer=QuestionAnswer”
 //
