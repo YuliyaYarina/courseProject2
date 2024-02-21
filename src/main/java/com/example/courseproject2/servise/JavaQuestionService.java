@@ -12,60 +12,53 @@ import static org.springframework.http.RequestEntity.put;
 @Service
 public class JavaQuestionService implements QuestionService {
 
-   private final Set<String> questions = new HashSet<>();
+   private final Set<Question> questions = new HashSet<>();
 
-    @PostConstruct
-    public void question(){
-        put("Дайте определение переменной.", "Petin");
-        put("Перечислите типы переменных. ", "Petin");
-        put("Какие методы называются геттерами?", "Petin");
-        put("Что геттеры делают?", "Petin");
-        put("Какие условные операторы вы знаете?", "Petin");
-        put("Что такое массив?", "Petin");
-        put("Дайте определение сеттерам.", "Petin");
-        put("Какие циклы вы знаете?", "Petin");
-        put("Что такое массив?", "Petin");
-        put("Что такое конструкторы?", "Petin");
-        put("Где String создается?", "Petin");
-        put("В чем разница между == и equals()?", "Petin");
-        put("Какая функция у оператора return?", "Petin");
-        put("Когда применяется цикл while?", "Petin");
-        put("Для чего применяется метод toString?", "Petin");
-        put("Что такое область видимости?", "Petin");
-    };
+   private final Random random = new Random();
+
+   @PostConstruct
+   public void init() {
+      add("Дайте определение переменной.", "Контейнер, в котором может храниться некоторое значение данных");
+      add("Перечислите типы переменных. ", "Целочисленные, с плавающей точкой, символы, логические");
+      add("Какие методы называются геттерами?", "Метод, который возвращает нам значение какого-то поля");
+      add("Что геттеры делают?", "Геттеры позволяют получать значение поля обьекта");
+      add("Какие условные операторы вы знаете?", "if-else, switch");
+      add("Что такое массив?", "Структура данных, которая хранит набор пронумерованных значений одного типа");
+      add("Дайте определение сеттерам.", "Метод, который изменяет значения поля");
+      add("Какие циклы вы знаете?", "while, do while, for each");
+      add("Что такое конструкторы?", "<Блок кода, похожий на метод, предназначенный для инициализации полей обьекта при его создании");
+      add("Какая функция у оператора return?", "завершает выполнение функции и возвращает управление вызывающей функции");
+   }
+
 @Override
     public Question add(String question, String answer){
-
-
-       return null;
+    Question newQuestion = new Question(question, answer);
+    questions.add(newQuestion);
+    return newQuestion;
     }
 
 @Override
     public Question add(Question question){
-
-
-       return null;
+    questions.add(question);
+       return question;
     }
 
     @Override
     public Question remove(Question question){
-
-
-       return null;
+    questions.remove(question);
+       return question;
     }
 
     @Override
     public Collection<Question> getAll(){
-
-
-       return null;
+        return questions;
     }
 
     @Override
     public Question getRandomQuestion(){
-
-
-       return null;
+    Random random = new Random();
+    int index = random.nextInt(questions.size());
+           return new ArrayList<>(questions).get(index);
     }
 
 

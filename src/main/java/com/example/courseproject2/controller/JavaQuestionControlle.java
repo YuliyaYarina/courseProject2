@@ -12,8 +12,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/exam/java")
 public class JavaQuestionControlle {
-   private QuestionService service;
-   private Question question;
+   private final QuestionService questionService;
 
 //    Добавить: “/exam/java/add?question=QuestionText&answer=QuestionAnswer”
 //
@@ -22,33 +21,23 @@ public class JavaQuestionControlle {
 //    Получить все вопросы: “/exam/java”
 
     public JavaQuestionControlle(QuestionService service) {
-        this.service = service;
+        this.questionService = service;
     }
 
     @GetMapping("/add")
     public Question addQuestion(@RequestParam String question, @RequestParam String answer) {
-        return null;
+        return questionService.add(question, answer);
     }
 
-//    @GetMapping
-//    public Question add(@RequestParam Question question) {
-//        return null;
-//    }
 
-   @GetMapping
-    public Question removeQuestion(@RequestParam Question question) {
-        return null;
+   @GetMapping("/remove")
+    public Question removeQuestion(@RequestParam String question, @RequestParam String answer) {
+        return questionService.remove(new Question(question, answer));
     }
 
-    @GetMapping
+    @GetMapping("/find")
     public Collection<Question> get() {
-        return null;
+        return questionService.getAll();
     }
-
-//    @GetMapping("/exam/get/{amount}")
-//    public Question getRandomQuestion() {
-//        return null;
-//    }
-
 
 }
